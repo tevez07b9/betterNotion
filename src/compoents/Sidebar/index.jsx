@@ -2,6 +2,7 @@
 import React from "react";
 import { css, jsx, useTheme } from "@emotion/react";
 import QuickFind from "./QuickFind";
+import NewPageLink from "./NewPageLink";
 
 const Sidebar = () => {
   const theme = useTheme();
@@ -11,6 +12,8 @@ const Sidebar = () => {
         width: 240px;
         height: 100%;
         flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
         background-color: ${theme?.dark?.midGrey};
       `}
     >
@@ -63,6 +66,7 @@ const Sidebar = () => {
         </div>
       </div>
       <QuickFind />
+      <NewPageLink />
     </div>
   );
 };
