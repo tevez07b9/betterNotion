@@ -4,6 +4,7 @@ import { css, jsx, useTheme } from "@emotion/react";
 import { AiOutlinePlus } from "react-icons/ai";
 import Dialog from "@reach/dialog";
 import "@reach/dialog/styles.css";
+import Board from "../Board";
 
 const NewPageLink = () => {
   const theme = useTheme();
@@ -78,18 +79,24 @@ const NewPageLink = () => {
           background-color: ${theme?.dark?.darkGrey};
           padding: 0;
           border-radius: 3px;
+          overflow-y: scroll;
+          overflow-x: hidden;
           width: 75%;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          max-width: 600px;
+          display: block;
+          max-width: 960px;
           min-height: 60px;
           max-height: 80vh;
+          ::-webkit-scrollbar {
+            background-color: ${theme?.dark?.midGrey};
+          }
+          ::-webkit-scrollbar-thumb {
+            background-color: ${theme?.dark?.lightGrey};
+          }
           box-shadow: rgb(15 15 15 / 10%) 0px 0px 0px 1px,
             rgb(15 15 15 / 20%) 0px 5px 10px, rgb(15 15 15 / 40%) 0px 15px 40px;
         `}
       >
-        <h1>Board Page will be rendered here.</h1>
+        <Board />
       </Dialog>
     </>
   );
