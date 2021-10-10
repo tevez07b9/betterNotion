@@ -1,10 +1,7 @@
-/** @jsxImportSource @emotion/react */
 import React from "react";
-import { css, jsx, useTheme } from "@emotion/react";
 import { HiDocument, HiDocumentText } from "react-icons/hi";
 import { FaTrello, FaThList } from "react-icons/fa";
 import { IoShapesSharp } from "react-icons/io5";
-import { GrGallery } from "react-icons/gr";
 import { BiArrowToBottom, BiTable, BiCalendarCheck } from "react-icons/bi";
 import { TemplateList } from "./Template";
 
@@ -23,26 +20,10 @@ const dataItems = [
 ];
 
 const Board = () => {
-  const theme = useTheme();
-
   return (
     <div>
-      <div
-        css={css`
-          width: 100%;
-          height: 100%;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          flex-shrink: 0;
-          flex-grow: 0;
-        `}
-      >
-        <div
-          css={css`
-            flex: 1;
-          `}
-        >
+      <div className="w-full h-full flex flex-col items-center flex-shrink-0 flex-grow-0">
+        <div className="flex-1">
           {/* Emoji Section */}
           {/* <div
             css={css`
@@ -54,53 +35,19 @@ const Board = () => {
           </div> */}
           {/* Emoji Section */}
 
-          <div
-            css={css`
-              margin-top: 32px;
-              padding-right: 126px;
-              height: 40px;
-              padding: 3px 2px;
-              padding-right: 126px;
-              background: ${theme?.dark?.daryGrey};
-            `}
-          >
+          <div className="mt-[32px] pr-[126px] h-[40px] py-[3px] px-[2px] bg-darkGrey">
             <input
               type="text"
               name="pageTitle"
               placeholder="Untitled"
-              css={css`
-                max-width: 100%;
-                width: 100%;
-                font-size: 40px;
-                white-space: pre-wrap;
-                word-break: break-word;
-                caret-color: ${theme?.dark?.textWhite};
-                min-height: 1em;
-                border: none;
-                color: ${theme?.dark?.textWhite};
-                cursor: text;
-                height: 40px;
-                background: transparent;
-                &:focus {
-                  border: none;
-                  outline: none;
-                }
-              `}
+              className="max-w-full w-full text-[40px] whitespace-pre-wrap 
+                break-words caret-textWhite min-h-[1em] border-none text-textWhite cursor-text
+                h-[40px] bg-transparent focus:border-none focus:outline-none"
             />
           </div>
 
-          <div
-            css={css`
-              width: 100%;
-            `}
-          >
-            <div
-              css={css`
-                padding: 5px 2px 24px;
-                color: ${theme?.dark?.textDark};
-                font-size: 16px;
-              `}
-            >
+          <div className="w-full">
+            <div className="pt-[5px] px-[5px] pb-[24px] text-textDark text-base">
               Press Enter to continue with an empty page, or pick a template (↑↓
               to select)
             </div>
@@ -108,18 +55,7 @@ const Board = () => {
 
           <TemplateList items={tempItems} />
 
-          <div
-            css={css`
-              padding: 3px 2px;
-              margin-top: 24px;
-              margin-bottom: 4px;
-              text-transform: uppercase;
-              letter-spacing: 1px;
-              font-size: 11px;
-              font-weight: 500;
-              color: ${theme?.dark?.textDark};
-            `}
-          >
+          <div className="py-[3px] px-[2px] mt-[2px] uppercase text-[11px] font-medium text-textDark">
             DATABASE
           </div>
           <TemplateList items={dataItems} />

@@ -1,11 +1,8 @@
-/** @jsxImportSource @emotion/react */
 import React from "react";
-import { css, jsx, useTheme } from "@emotion/react";
 import Dialog from "@reach/dialog";
 import "@reach/dialog/styles.css";
 
 const QuickFind = () => {
-  const theme = useTheme();
   const [showFindModal, setShowFindModal] = React.useState(false);
 
   const openFindModal = () => setShowFindModal(true);
@@ -14,29 +11,10 @@ const QuickFind = () => {
   return (
     <>
       <div
-        css={css`
-          padding: 2px 14px;
-          height: 27px;
-          display: flex;
-          align-items: center;
-          width: 100%;
-          font-size: 14px;
-          cursor: pointer;
-          &:hover {
-            background-color: ${theme?.dark?.lightGrey};
-          }
-        `}
+        className="py-1 px-4 h-[27px] flex items-center w-full text-sm cursor-pointer hover:bg-lightGrey"
         onClick={openFindModal}
       >
-        <div
-          css={css`
-            flex: 1 1 auto;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            color: ${theme?.dark?.textGrey};
-            font-weight: 500;
-          `}
-        >
+        <div className="flex-1 whitespace-nowrap text-textGrey font-medium">
           Quick Find
         </div>
       </div>
@@ -44,118 +22,37 @@ const QuickFind = () => {
       <Dialog
         isOpen={showFindModal}
         onDismiss={closeFindModal}
-        css={css`
-          background-color: ${theme?.dark?.darkGrey};
-          padding: 0;
-          border-radius: 3px;
-          width: 75%;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          max-width: 600px;
-          min-height: 60px;
-          max-height: 80vh;
-          box-shadow: rgb(15 15 15 / 10%) 0px 0px 0px 1px,
-            rgb(15 15 15 / 20%) 0px 5px 10px, rgb(15 15 15 / 40%) 0px 15px 40px;
-        `}
+        className="bg-darkGrey p-0 rounded-sm w-[75%] flex flex-col justify-center 
+          min-w-[600px] min-h-[60px] max-h-[80vh] shadow-modal-shadow"
       >
         <div
-          css={css`
-            display: flex;
-            align-items: center;
-            border: none;
-            padding: 0px 16px;
-            background: transparent;
-            font-size: 18px;
-            line-height: inherit;
-            height: 52px;
-            flex-grow: 0;
-            flex-shrink: 0;
-            z-index: 1;
-            ${true && "box-shadow: rgb(255 255 255 / 7%) 0px 1px 0px;"}
-          `}
+          className={`flex items-center border-0 py-0 px-4 bg-transparent 
+            text-lg h-[52px] flex-grow-0 flex-shrink-0 z-[1] ${
+              true && "shadow-border-bottom"
+            }`}
         >
           <input
             name="search"
             placeholder="Search Talmeez's Notion"
-            css={css`
-              font-size: inherit;
-              line-height: inherit;
-              border: none;
-              background: none;
-              width: 100%;
-              display: block;
-              resize: none;
-              padding: 0px;
-              min-width: 0px;
-              white-space: nowrap;
-              overflow: hidden;
-              text-overflow: ellipsis;
-              color: ${theme?.dark?.textWhite};
-              &:focus {
-                border: none;
-                outline: none;
-              }
-            `}
+            className="border-none bg-transparent w-full block p-0 whitespace-nowrap overflow-hidden
+              text-textWhite focus:border-none focus:outline-none"
           />
         </div>
 
         {/* Results */}
         <div
-          css={css`
-            display: flex;
-            align-items: center;
-            line-height: 120%;
-            width: 100%;
-            min-height: 36px;
-            font-size: 14px;
-            padding-top: 8px;
-            padding-bottom: 8px;
-            box-shadow: rgb(255 255 255 / 7%) 0px 1px 0px;
-            &:hover {
-              background-color: ${theme?.dark?.lightGrey};
-            }
-          `}
+          className="flex items-center w-full min-h-[36px] text-sm pt-2 pb-2 shadow-border-bottom
+            hover:bg-lightGrey"
         >
-          <div
-            css={css`
-              margin-left: 8px;
-              margin-right: 14px;
-              white-space: nowrap;
-              overflow: hidden;
-              text-overflow: ellipsis;
-              font-weight: 500;
-              line-height: 20px;
-              color: ${theme?.dark?.textGrey};
-            `}
-          >
+          <div className="ml-2 mr-4 whitespace-nowrap overflow-hidden font-medium text-textGrey">
             Jira Clone
           </div>
         </div>
         {/* Results */}
 
         {/* Result Count */}
-        <div
-          css={css`
-            box-shadow: rgb(255 255 255 / 7%) 0px -1px 0px;
-            margin-top: 1px;
-            display: flex;
-            flex-direction: row;
-            min-height: 28px;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 14px;
-          `}
-        >
-          <div
-            css={css`
-              margin-left: 14px;
-              margin-right: 14px;
-              font-weight: 500;
-              font-size: 12px;
-              color: ${theme?.dark?.textGrey};
-            `}
-          >
+        <div className="shadow-border-bottom mt-[1px] flex min-h-[28px] justify-center items-center text-sm">
+          <div className="ml-4 mr-4 font-medium text-xs text-textGrey">
             3 Results
           </div>
         </div>
